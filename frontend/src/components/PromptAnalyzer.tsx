@@ -37,17 +37,19 @@ export default function PromptAnalyzer({ onAnalyzed }: PromptAnalyzerProps) {
       return;
     }
 
+    const API_BASE = (import.meta.env.VITE_API_BASE as string) || "";
+
     try {
       setIsLoading(true);
       setError(null);
-      const response = await axios.post<AnalysisResult>("http://localhost:8000/analyze", {
+      const response = await axios.post<AnalysisResult>(`${API_BASE}/analyze`, {
         prompt,
       });
 
       setResult(response.data);
       onAnalyzed(response.data);
-    } catch {
-      setError("Unable to analyze prompt. Confirm backend is running on port 8000.");
+    } catch (err) {
+      setError("Unable to analyze prompt. Confirm backend is reachable from this site.");
     } finally {
       setIsLoading(false);
     }

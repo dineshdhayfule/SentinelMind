@@ -76,7 +76,8 @@ const demoScenarios: DemoScenario[] = [
 ];
 
 async function analyzeScenario(prompt: string) {
-  const response = await axios.post<Incident>("http://localhost:8000/analyze", { prompt });
+  const API_BASE = (import.meta.env.VITE_API_BASE as string) || "";
+  const response = await axios.post<Incident>(`${API_BASE}/analyze`, { prompt });
   return response.data;
 }
 

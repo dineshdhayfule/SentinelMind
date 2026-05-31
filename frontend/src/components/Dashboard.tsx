@@ -118,7 +118,8 @@ export default function Dashboard() {
   useEffect(() => {
     const loadEvents = async () => {
       try {
-        const response = await axios.get<Incident[]>("http://localhost:8000/events");
+        const API_BASE = (import.meta.env.VITE_API_BASE as string) || "";
+        const response = await axios.get<Incident[]>(`${API_BASE}/events`);
         const events = response.data;
         setEventData(events);
         setRecentActivities(events.slice(0, 10).map((event) => `[${formatActivityTime(event.createdAt)}] ${getActivityLabel(event)}`));
