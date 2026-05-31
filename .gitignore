@@ -21,7 +21,7 @@ dist/
 /frontend/node_modules/
 
 # dotenv
-.env
+/backend/.env
 .env.*
 
 # VS Code
