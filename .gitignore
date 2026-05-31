@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+pip-wheel-metadata/
+venv/
+venv/*
+.venv/
+env/
+ENV/
+build/
+dist/
+*.sqlite3
+*.db
+
+# Virtual environment folders in backend/frontend
+/backend/venv/
+/backend/.venv/
+/frontend/node_modules/
+
+# dotenv
+.env
+.env.*
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+dist/
+build/
+.turbo/
+.parcel-cache/
+.vite/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# macOS
+.DS_Store
+
+# JetBrains
+.idea/
+
+# Coverage
+.coverage
+htmlcov/
+
+# Misc
+Thumbs.db
+coverage/
+/.pytest_cache/
