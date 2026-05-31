@@ -1,0 +1,27 @@
+# Render manifest for deploying backend service
+# Replace placeholders (repo URL, branch) and set secrets in Render dashboard or via CLI.
+
+services:
+  - type: web
+    name: sentinelmind-backend
+    env: docker
+    plan: free
+    repo: https://github.com/<YOUR_ORG>/<YOUR_REPO>
+    branch: main
+    dockerfilePath: backend/Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_NAME
+        value: sentinelmind
+      - key: ENVIRONMENT
+        value: production
+      - key: MONGO_URI
+        fromSecret: MONGO_URI
+      - key: GEMINI_API_KEY
+        fromSecret: GEMINI_API_KEY
+
+secrets:
+  - name: MONGO_URI
+    value: "REPLACE_WITH_YOUR_MONGO_URI"
+  - name: GEMINI_API_KEY
+    value: "REPLACE_WITH_YOUR_GEMINI_API_KEY"
